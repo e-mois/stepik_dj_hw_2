@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block container %}
+    {% for tour, tour_value in tours.items %}
+        {% if tour == id%}
+            <h1 class="display-3 mt-4" data-test="title">{{ tour_value.title }} {{ tour_value.stars }} ★</h1>
+
+            <!-- HERO -->
+
+            <p class="lead" data-test="lead"><span data-test="country">{{ tour_value.country }}</span>
+                <span data-text="departure">
+                    {{ city_from }}
+                </span>
+                <span data-text="nights">{{ tour_value.nights }}</span> ночей</p>
+
+            <img data-test="picture" src="{{ tour_value.picture }}" class="w-75" alt="">
+
+            <p class="my-4 w-75" data-test="description">{{ tour_value.description }}</p>
+
+            <a href="" class="btn btn-success btn-lg" data-test="buybutton">Купить тур за
+                <span data-test="price">{{ tour_value.price }}</span></a>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
